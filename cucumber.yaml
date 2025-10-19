@@ -1,0 +1,14 @@
+default:
+  formatOptions:
+    snippetInterface: 'async-await'
+  paths:
+    - './features/**/*.feature'
+  dryRun: false
+  require:
+    - './features/steps/*.ts'
+    - './features/support/*.ts'
+  requireModule:
+    - 'ts-node/register'
+  format:
+    - 'json:target/cucumber/report.json'
+  publish: false
