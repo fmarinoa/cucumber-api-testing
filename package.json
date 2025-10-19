@@ -1,0 +1,33 @@
+{
+  "name": "cucumber-api-testing",
+  "version": "0.0.1",
+  "author": {
+    "name": "Franco Mariño",
+    "url": "https://github.com/fmarinoa"
+  },
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fmarinoa/cucumber-api-testing"
+  },
+  "scripts": {
+    "lint:fix": "eslint . --fix",
+    "prettier": "prettier --write .",
+    "prettier:check": "prettier --check .",
+    "prepare": "husky || true",
+    "test": ""
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@commitlint/cli": "19.8.1",
+    "@commitlint/config-conventional": "19.8.1",
+    "@cucumber/cucumber": "12.2.0",
+    "@tsconfig/node22": "22.0.2",
+    "eslint": "9.34.0",
+    "typescript-eslint": "8.41.0",
+    "pactum": "3.8.0",
+    "husky": "9.1.7",
+    "prettier": "3.6.2",
+    "dotenv": "17.2.3"
+  }
+}
