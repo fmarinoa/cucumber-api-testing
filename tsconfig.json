@@ -1,6 +1,6 @@
 {
   "extends": "@tsconfig/node22/tsconfig.json",
-  "include": ["src"],
+  "include": ["src", "features"],
   "exclude": ["dist"],
   "compilerOptions": {
     "baseUrl": ".",

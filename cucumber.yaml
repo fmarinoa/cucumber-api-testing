@@ -9,6 +9,7 @@ default:
     - './features/support/*.ts'
   requireModule:
     - 'ts-node/register'
+    - 'tsconfig-paths/register'
   format:
     - 'json:cucumber-report.json'
   publish: false
