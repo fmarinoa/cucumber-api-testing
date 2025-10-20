@@ -10,5 +10,5 @@ default:
   requireModule:
     - 'ts-node/register'
   format:
-    - 'json:target/cucumber/report.json'
+    - 'json:cucumber-report.json'
   publish: false
