@@ -1,0 +1,19 @@
+import { When } from '@cucumber/cucumber'
+import { buildHttpRequest } from '@/services/client'
+
+When(
+  'I send a {string} request to {string}',
+  async function (method: string, url: string) {
+    const { request } = this.context
+
+    if (method !== request.method || url !== request.url) {
+      throw new Error(
+        `Request method or URL does not match context. Expected ${request.method} ${request.url}, got ${method} ${url}`
+      )
+    }
+
+    this.response = await buildHttpRequest(method, url)
+      .withHeaders(request.headers || {})
+      .withBody(request.body || {})
+  }
+)
