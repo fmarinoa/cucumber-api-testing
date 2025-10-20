@@ -1,0 +1,27 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "/user",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "id": "111",
+      "username": "test001",
+      "firstName": "User001",
+      "lastName": "User001",
+      "email": "user001@test.com",
+      "password": "User#001",
+      "phone": "912345678",
+      "userStatus": 1
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "code": 200,
+      "type": "unknown",
+      "message": "111"
+    }
+  }
+}
