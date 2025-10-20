@@ -3,5 +3,7 @@
     {
       "file": ".github/instructions/copilot-commit-message.instructions.md"
     }
-  ]
+  ],
+  "cucumber.features": ["features/**/*.feature"],
+  "cucumber.glue": ["features/steps/*.steps.ts"]
 }
