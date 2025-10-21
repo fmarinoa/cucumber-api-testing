@@ -3,9 +3,11 @@
 Proyecto de pruebas automatizadas de API usando Cucumber, TypeScript y Pactum.
 
 ## Descripción
+
 Este proyecto permite definir y ejecutar pruebas BDD (Behavior Driven Development) sobre APIs REST, utilizando archivos `.feature` para describir escenarios y Pactum para realizar las peticiones HTTP y validaciones.
 
 ## Buenas prácticas y escalabilidad
+
 - Los steps están modularizados por tipo de acción.
 - Los servicios HTTP se agrupan en `src/services`.
 - Los datos de prueba se almacenan en `data/` y se cargan dinámicamente.
@@ -37,6 +39,7 @@ Este proyecto permite definir y ejecutar pruebas BDD (Behavior Driven Developmen
 ```
 
 ## Principales dependencias
+
 - [Cucumber.js](https://github.com/cucumber/cucumber-js)
 - [Pactum](https://github.com/pactumjs/pactum)
 - [TypeScript](https://www.typescriptlang.org/)
@@ -56,10 +59,13 @@ Este proyecto permite definir y ejecutar pruebas BDD (Behavior Driven Developmen
    ```
 
 ## Uso de alias de importación
+
 El proyecto usa alias `@/` para importar desde `src/`. Configurado en `tsconfig.json` y soportado por `tsconfig-paths`.
 
 ## Ejemplo de escenario
+
 Archivo: `features/user/create_user.feature`
+
 ```gherkin
 Feature: POST /user - Create User
 
@@ -72,8 +78,9 @@ Feature: POST /user - Create User
 ```
 
 ## Autor
+
 [fmarinoa](https://github.com/fmarinoa)
 
-
 ---
+
 ¿Dudas o sugerencias? ¡Abre un issue o contacta conmigo:)!
