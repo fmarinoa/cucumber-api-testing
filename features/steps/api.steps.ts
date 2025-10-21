@@ -1,8 +1,14 @@
-import { When } from '@cucumber/cucumber'
+import { defineParameterType, When } from '@cucumber/cucumber'
 import { buildHttpRequest } from '@/services/client'
 
+defineParameterType({
+  name: 'httpMethod',
+  regexp: /(GET|POST|PUT|DELETE|PATCH)/,
+  transformer: (method: string) => method,
+})
+
 When(
-  'I send a {string} request to {string}',
+  'I send a {httpMethod} request to {string}',
   async function (method: string, url: string) {
     const { request } = this.context
 
