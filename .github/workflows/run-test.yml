@@ -8,7 +8,7 @@ on:
     branches: ['main', 'develop']
 
 jobs:
-  test:
+  execute-test:
     runs-on: ubuntu-latest
 
     strategy:
@@ -48,3 +48,38 @@ jobs:
           name: cucumber-report
           path: cucumber-report.html
           retention-days: 30
+
+  publish-report:
+    needs: execute-test
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    runs-on: ubuntu-latest
+    if: ${{ always() }}
+    
+    permissions:
+      pages: write
+
+    steps:
+      - name: Download cucumber-report artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: cucumber-report
+
+      - name: Rename cucumber-report.html to index.html
+        run: mv cucumber-report.html index.html
+        working-directory: cucumber-report
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: 'cucumber-report'
+      
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
