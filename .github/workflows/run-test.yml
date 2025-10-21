@@ -5,11 +5,10 @@ name: Run API Tests
 
 on:
   push:
-    branches: [ "main", "develop" ]
+    branches: ['main', 'develop']
 
 jobs:
   test:
-
     runs-on: ubuntu-latest
 
     strategy:
@@ -27,7 +26,7 @@ jobs:
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
-            node-version: ${{ matrix.node-version }}
+          node-version: ${{ matrix.node-version }}
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4
@@ -36,11 +35,11 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install
-      
+
       - name: Run API tests
         run: pnpm run test
         env:
-            FORCE_COLOR: 0
+          FORCE_COLOR: 0
 
       - name: Upload test report (artifact)
         uses: actions/upload-artifact@v4
