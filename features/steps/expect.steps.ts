@@ -1,3 +1,4 @@
+import { transformMatchers } from '@/utils/transformMatchers'
 import { Then } from '@cucumber/cucumber'
 import pactum from 'pactum'
 
@@ -19,5 +20,7 @@ Then(
 Then('the response body should be the same as expected', function () {
   const { response } = this.context
 
-  pactum.expect(this.response).to.have.body(response.body)
+  pactum
+    .expect(this.response)
+    .to.have.jsonLike(transformMatchers(response.body))
 })
