@@ -68,8 +68,10 @@ jobs:
         with:
           name: cucumber-report
 
-      - name: Rename cucumber-report.html to index.html
-        run: mv cucumber-report.html index.html
+      - name: Rename cucumber-report.html to cucumber-report/index.html
+        run: |
+          mkdir -p cucumber-report
+          mv cucumber-report.html cucumber-report/index.html
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
