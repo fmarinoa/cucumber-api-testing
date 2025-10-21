@@ -58,7 +58,7 @@ jobs:
 
     runs-on: ubuntu-latest
     if: ${{ always() }}
-    
+
     permissions:
       pages: write
 
@@ -70,16 +70,15 @@ jobs:
 
       - name: Rename cucumber-report.html to index.html
         run: mv cucumber-report.html index.html
-        working-directory: cucumber-report
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
-      
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: 'cucumber-report'
-      
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
