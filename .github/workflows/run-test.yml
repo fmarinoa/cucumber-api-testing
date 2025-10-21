@@ -61,6 +61,7 @@ jobs:
 
     permissions:
       pages: write
+      id-token: write
 
     steps:
       - name: Download cucumber-report artifact
