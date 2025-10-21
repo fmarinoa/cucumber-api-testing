@@ -140,3 +140,4 @@ vite.config.ts.timestamp-*
 
 # Cucumber report files
 cucumber-report.json
+cucumber-report.html

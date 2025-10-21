@@ -2,7 +2,7 @@ default:
   formatOptions:
     snippetInterface: 'async-await'
   paths:
-    - './features/**/*.feature'
+    - './features/*.feature'
   dryRun: false
   require:
     - './features/steps/*.steps.ts'
@@ -12,4 +12,5 @@ default:
     - 'tsconfig-paths/register'
   format:
     - 'json:cucumber-report.json'
+    - 'html:cucumber-report.html'
   publish: false

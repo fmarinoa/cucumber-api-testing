@@ -5,12 +5,13 @@
     "name": "Franco Mariño",
     "url": "https://github.com/fmarinoa"
   },
-  "description": "",
+  "description": "Modular, scalable API testing framework using Cucumber, TypeScript, and Pactum—create new tests without touching code, just feature files and JSON context.",
   "repository": {
     "type": "git",
     "url": "https://github.com/fmarinoa/cucumber-api-testing"
   },
   "scripts": {
+    "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "prettier": "prettier --write .",
     "prettier:check": "prettier --check .",
@@ -23,6 +24,8 @@
     "@cucumber/cucumber": "12.2.0",
     "@tsconfig/node22": "22.0.2",
     "@types/node": "24.8.1",
+    "@typescript-eslint/eslint-plugin": "8.46.2",
+    "@typescript-eslint/parser": "8.46.2",
     "dotenv": "17.2.3",
     "eslint": "9.34.0",
     "husky": "9.1.7",
