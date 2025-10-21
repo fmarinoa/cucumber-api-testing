@@ -12,4 +12,5 @@ default:
     - 'tsconfig-paths/register'
   format:
     - 'json:cucumber-report.json'
+    - 'html:cucumber-report.html'
   publish: false
