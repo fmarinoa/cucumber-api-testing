@@ -4,7 +4,7 @@ Proyecto de pruebas automatizadas de API usando Cucumber, Axios y Jest.
 
 ## Descripción
 
-Este proyecto permite definir y ejecutar pruebas BDD (Behavior Driven Development) sobre APIs REST, utilizando archivos `.feature` para describir escenarios y Pactum para realizar las peticiones HTTP y validaciones.
+Este proyecto permite definir y ejecutar pruebas BDD (Behavior Driven Development) sobre APIs REST, utilizando archivos `.feature` para describir escenarios, Axios para realizar las peticiones HTTP y Jest para las validaciones.
 
 ## Buenas prácticas y escalabilidad
 
