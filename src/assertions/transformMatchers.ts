@@ -1,31 +1,62 @@
-import { like, regex } from 'pactum-matchers'
+import { jestExpect } from '@jest/expect'
 
-export type MatcherType = 'LIKE' | 'REGEX'
-
-export function transformMatchers(obj: unknown): unknown {
-  if (Array.isArray(obj)) {
+export function transformMatchers(obj: unknown): any {
+  if (isArray(obj)) {
     return obj.map(transformMatchers)
+  } else if (isObject(obj)) {
+    return Object.keys(obj).reduce(
+      (acc, key) => {
+        acc[key] = transformMatchers(obj[key])
+        return acc
+      },
+      {} as Record<string, unknown>
+    )
+  } else if (isString(obj)) {
+    return generateMatcher(obj)
+  } else {
+    return obj
   }
-  if (obj !== null && typeof obj === 'object') {
-    // Si es un matcher pactum-matchers
-    if ('pactum_type' in obj && typeof obj === 'object') {
-      const pactumType = (obj as any).pactum_type as MatcherType
-      const value = (obj as any).value
-      switch (pactumType) {
-        case 'LIKE':
-          return like(value)
-        case 'REGEX':
-          return regex(value)
-        default:
-          return obj
-      }
-    }
-    // Si es un objeto normal, recursivo
-    const result: Record<string, unknown> = {}
-    for (const [key, value] of Object.entries(obj)) {
-      result[key] = transformMatchers(value)
-    }
-    return result
+}
+
+const isArray = (obj: unknown): obj is unknown[] =>
+  obj !== null && Array.isArray(obj)
+
+const isObject = (obj: unknown): obj is Record<string, unknown> =>
+  obj !== null && typeof obj === 'object' && !Array.isArray(obj)
+
+const isString = (obj: unknown): obj is string =>
+  obj !== null && typeof obj === 'string'
+
+const generateMatcher = (obj: string): unknown => {
+  // Parse placeholder in format #{FUNCTION:PARAM1:PARAM2}
+  const match = /^#\{(.+?)\}$/.exec(obj)
+  if (!match) return obj
+
+  const parts = match[1].split(':')
+  const functionName = parts[0]?.toUpperCase()
+
+  switch (functionName) {
+    case 'RANDOM':
+      return parseRandomPlaceholder(parts)
+    default:
+      throw new Error(`Unknown matcher function: ${functionName}`)
   }
-  return obj
+}
+
+function parseRandomPlaceholder(parts: string[]): unknown {
+  const subType = parts[1]?.toUpperCase()
+  switch (subType) {
+    case 'NUMBER': {
+      const len = parts[2] ? Number.parseInt(parts[2], 10) : undefined
+      if (!len || !Number.isInteger(len) || len <= 0) jestExpect.any(Number)
+      return jestExpect.stringMatching(new RegExp(`^\\d{${len}}$`))
+    }
+    case 'STRING': {
+      const len = parts[2] ? parts[2].toString() : undefined
+      if (!len) jestExpect.any(String)
+      return jestExpect.stringMatching(new RegExp(`^[A-Za-z0-9]{${len}}$`))
+    }
+    default:
+      throw new Error(`Unknown matcher subtype: ${subType}`)
+  }
 }
