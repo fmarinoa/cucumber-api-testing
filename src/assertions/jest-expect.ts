@@ -1,5 +1,6 @@
 import { jestExpect } from '@jest/expect'
 import { AxiosResponse } from 'axios'
+import { transformMatchers } from './transformMatchers'
 
 export function validateResponseStatus(
   response: AxiosResponse,
@@ -10,7 +11,7 @@ export function validateResponseStatus(
 
 export function validateResponseBody(
   response: AxiosResponse,
-  expectedBody: any
+  expectedBody: unknown
 ) {
-  jestExpect(response.data).toEqual(expectedBody)
+  jestExpect(response.data).toEqual(transformMatchers(expectedBody))
 }

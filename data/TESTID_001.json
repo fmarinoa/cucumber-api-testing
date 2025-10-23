@@ -20,7 +20,7 @@
     "body": {
       "code": 200,
       "type": "unknown",
-      "message": "7122077533730985769"
+      "message": "#{RANDOM:NUMBER:19}"
     }
   }
 }
