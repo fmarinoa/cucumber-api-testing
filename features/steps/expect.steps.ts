@@ -1,5 +1,5 @@
+import { validateResponseBody, validateResponseStatus } from '@/assertions'
 import { Then } from '@cucumber/cucumber'
-import pactum from 'pactum'
 
 Then(
   'the response status code should be {int}',
@@ -12,12 +12,12 @@ Then(
       )
     }
 
-    pactum.expect(this.response).to.have.status(expectedStatusCode)
+    validateResponseStatus(this.response, expectedStatusCode)
   }
 )
 
 Then('the response body should be the same as expected', function () {
   const { response } = this.context
 
-  pactum.expect(this.response).to.have.body(response.body)
+  validateResponseBody(this.response, response.body)
 })

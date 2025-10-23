@@ -1,6 +1,6 @@
 # cucumber-api-testing
 
-Proyecto de pruebas automatizadas de API usando Cucumber, TypeScript y Pactum.
+Proyecto de pruebas automatizadas de API usando Cucumber, Axios y Jest.
 
 ## Descripción
 
@@ -41,8 +41,8 @@ Este proyecto permite definir y ejecutar pruebas BDD (Behavior Driven Developmen
 ## Principales dependencias
 
 - [Cucumber.js](https://github.com/cucumber/cucumber-js)
-- [Pactum](https://github.com/pactumjs/pactum)
-- [TypeScript](https://www.typescriptlang.org/)
+- [Axios](https://github.com/axios/axios)
+- [Jest](https://github.com/jestjs/jest)
 - [ts-node](https://github.com/TypeStrong/ts-node)
 - [tsconfig-paths](https://github.com/dividab/tsconfig-paths)
 - [Prettier](https://prettier.io/) y [ESLint](https://eslint.org/) para formato y calidad de código
