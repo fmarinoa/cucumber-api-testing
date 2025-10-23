@@ -1,22 +1,34 @@
-import pactum from 'pactum'
-import Spec from 'pactum/src/models/Spec'
+import { axiosInstance } from '@/repositories'
+import { AxiosResponse, AxiosRequestConfig } from 'axios'
 
-import { BASE_URL } from '..'
+interface RequestConfig {
+  method: string
+  url: string
+  headers?: Record<string, string>
+  body?: any
+  queryParams?: Record<string, any>
+}
 
-export function buildHttpRequest(method: string, url: string): Spec {
-  const spec = pactum.spec()
-  switch (method.toLowerCase()) {
-    case 'get':
-      return spec.get(`${BASE_URL}${url}`)
-    case 'post':
-      return spec.post(`${BASE_URL}${url}`)
-    case 'put':
-      return spec.put(`${BASE_URL}${url}`)
-    case 'delete':
-      return spec.delete(`${BASE_URL}${url}`)
-    case 'patch':
-      return spec.patch(`${BASE_URL}${url}`)
-    default:
-      throw new Error(`Invalid HTTP method: ${method}`)
+export async function executeRequest(
+  request: RequestConfig
+): Promise<AxiosResponse> {
+  const axios = axiosInstance
+  const {
+    url,
+    method,
+    headers = {},
+    body: data = {},
+    queryParams: params = {},
+  } = request
+
+  const config: AxiosRequestConfig = {
+    url,
+    method,
+    headers,
+    params,
+    data,
+    validateStatus: () => true, // Accept all status codes
   }
+
+  return axios.request(config)
 }

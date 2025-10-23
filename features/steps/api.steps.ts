@@ -1,5 +1,5 @@
 import { defineParameterType, When } from '@cucumber/cucumber'
-import { buildHttpRequest } from '@/services/client'
+import { executeRequest } from '@/services/client'
 
 defineParameterType({
   name: 'httpMethod',
@@ -18,8 +18,11 @@ When(
       )
     }
 
-    this.response = await buildHttpRequest(method, url)
-      .withHeaders(request.headers || {})
-      .withBody(request.body || {})
+    this.response = await executeRequest({
+      method,
+      url,
+      headers: request?.headers,
+      body: request?.body,
+    })
   }
 )
