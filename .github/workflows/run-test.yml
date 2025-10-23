@@ -8,7 +8,7 @@ on:
     branches: ['main']
 
   schedule:
-    - cron: '0 14 * * *' # At 14:00 every day
+    - cron: '0 14 * * *' # At 14:00 UTC every day
 
 jobs:
   execute-test:
@@ -72,7 +72,7 @@ jobs:
         with:
           name: cucumber-report
 
-      - name: Rename cucumber-report.html to cucumber-report/index.html
+      - name: Move cucumber-report.html to cucumber-report/index.html
         run: |
           mkdir -p cucumber-report
           mv cucumber-report.html cucumber-report/index.html
