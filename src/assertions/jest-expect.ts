@@ -13,5 +13,5 @@ export function validateResponseBody(
   response: AxiosResponse,
   expectedBody: unknown
 ) {
-  jestExpect(response.data).toMatchObject(transformMatchers(expectedBody))
+  jestExpect(response.data).toEqual(transformMatchers(expectedBody))
 }
