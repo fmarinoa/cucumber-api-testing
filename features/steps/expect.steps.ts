@@ -1,4 +1,8 @@
-import { validateResponseBody, validateResponseStatus } from '@/assertions'
+import {
+  validateResponseBody,
+  validateResponseHeaders,
+  validateResponseStatus,
+} from '@/assertions'
 import { Then } from '@cucumber/cucumber'
 
 Then(
@@ -20,4 +24,10 @@ Then('the response body should be the same as expected', function () {
   const { response } = this.context
 
   validateResponseBody(this.response, response.body)
+})
+
+Then('the response headers should be the same as expected', function () {
+  const { response } = this.context
+
+  validateResponseHeaders(this.response, response.headers)
 })

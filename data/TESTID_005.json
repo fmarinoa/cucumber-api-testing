@@ -1,0 +1,25 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "/user/login",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "queryParams": {
+      "username": "test005",
+      "password": "User#005"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "code": 200,
+      "type": "unknown",
+      "message": "logged in user session:#{RANDOM:NUMBER:13}"
+    },
+    "headers": {
+      "x-expires-after": "#{ASC_TIME}",
+      "x-rate-limit": "5000"
+    }
+  }
+}
