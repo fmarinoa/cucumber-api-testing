@@ -1,0 +1,34 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "/user/createWithArray",
+    "body": [
+      {
+        "username": "test001",
+        "firstName": "User001",
+        "lastName": "User001",
+        "email": "user001@test.com",
+        "password": "User#001",
+        "phone": "912345678",
+        "userStatus": 1
+      },
+      {
+        "username": "test002",
+        "firstName": "User002",
+        "lastName": "User002",
+        "email": "user002@test.com",
+        "password": "User#002",
+        "phone": "912345679",
+        "userStatus": 1
+      }
+    ]
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "code": 200,
+      "type": "unknown",
+      "message": "ok"
+    }
+  }
+}
