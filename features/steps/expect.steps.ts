@@ -1,4 +1,8 @@
-import { validateResponseBody, validateResponseHeaders, validateResponseStatus } from '@/assertions'
+import {
+  validateResponseBody,
+  validateResponseHeaders,
+  validateResponseStatus,
+} from '@/assertions'
 import { Then } from '@cucumber/cucumber'
 
 Then(

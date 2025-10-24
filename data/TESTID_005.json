@@ -18,7 +18,7 @@
       "message": "logged in user session:#{RANDOM:NUMBER:13}"
     },
     "headers": {
-      "x-expires-after": "#{RANDOM:ASC_TIME}",
+      "x-expires-after": "#{ASC_TIME}",
       "x-rate-limit": "5000"
     }
   }
