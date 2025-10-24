@@ -15,3 +15,10 @@ export function validateResponseBody(
 ) {
   jestExpect(response.data).toEqual(transformMatchers(expectedBody))
 }
+
+export function validateResponseHeaders(
+  response: AxiosResponse,
+  expectedHeaders: Record<string, unknown>
+) {
+  jestExpect(response.headers).toMatchObject(transformMatchers(expectedHeaders))
+}
